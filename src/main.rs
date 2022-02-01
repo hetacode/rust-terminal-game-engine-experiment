@@ -1,6 +1,5 @@
 use std::sync::Arc;
 use std::sync::Mutex;
-use std::thread;
 mod engine;
 
 struct Game {
@@ -13,11 +12,15 @@ fn main() {
     let data = Arc::new(Mutex::new(Game { x: 10, y: 10 }));
 
     let d = data.clone();
-    e.draw(move || {
+    e.draw(move |surface| {
         let d = d.lock().unwrap();
-        print!("\u{001B}[1;1H\u{001B}[2J");
-        print!("\u{001B}[{};{}H", d.y, d.x);
-        print!("*");
+
+        surface.draw("\u{001B}[2J");
+        surface.draw(format!("\u{001B}[{};{}H@", d.y, d.x).as_str());
+
+        for x in 0..10 {
+                surface.draw(format!("\u{001B}[{};{}H%", x, x).as_str());
+        }
     });
 
     let d = data.clone();
