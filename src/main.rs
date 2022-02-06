@@ -1,3 +1,4 @@
+use engine::surface_object::SurfaceObject;
 use std::sync::Arc;
 use std::sync::Mutex;
 mod engine;
@@ -15,11 +16,19 @@ fn main() {
     e.draw(move |surface| {
         let d = d.lock().unwrap();
 
-        surface.draw("\u{001B}[2J");
-        surface.draw(format!("\u{001B}[{};{}H@", d.y, d.x).as_str());
+        surface.draw(SurfaceObject::ClearScr);
+        surface.draw(SurfaceObject::Point {
+            x: d.x,
+            y: d.y,
+            value: "🐧",
+        });
 
         for x in 0..10 {
-                surface.draw(format!("\u{001B}[{};{}H%", x, x).as_str());
+            surface.draw(SurfaceObject::Point {
+                x,
+                y: x,
+                value: "🐵",
+            });
         }
     });
 

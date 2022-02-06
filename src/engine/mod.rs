@@ -5,6 +5,7 @@ use std::{io, thread};
 use termios::*;
 
 mod surface;
+pub mod surface_object;
 
 pub struct Engine {
     draw_callback: Option<Box<dyn Fn(&mut surface::Surface)>>,
