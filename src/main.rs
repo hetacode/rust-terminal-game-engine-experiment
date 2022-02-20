@@ -1,4 +1,4 @@
-use engine::surface_object::SurfaceObject;
+use engine::surface_object::{ForegroundColor, SurfaceObject};
 use std::sync::Arc;
 use std::sync::Mutex;
 mod engine;
@@ -29,6 +29,22 @@ fn main() {
                 y: x,
                 value: "🐵",
             });
+
+            surface.draw(SurfaceObject::Color(ForegroundColor::Blue));
+            surface.draw(SurfaceObject::Point {
+                x,
+                y: 5,
+                value: "=",
+            });
+
+            surface.draw(SurfaceObject::Color(ForegroundColor::Red));
+            surface.draw(SurfaceObject::Point {
+                x,
+                y: 6,
+                value: "=",
+            });
+
+            surface.draw(SurfaceObject::Reset);
         }
     });
 
