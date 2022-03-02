@@ -63,7 +63,7 @@ impl SurfaceObject<'_> {
         let m = (y1 - y2) / (x1 - x2);
         let c = y1 - x1 * m;
         let range: Box<dyn Iterator<Item=i32>> = if x2 < x1 {
-            Box::new((x1..x2).rev())
+            Box::new(x2..x1)
         } else {
             Box::new(x1..x2)
         };

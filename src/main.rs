@@ -46,9 +46,27 @@ fn main() {
 
             surface.draw(SurfaceObject::Reset);
 
-            surface.draw(SurfaceObject::Line{x1: 16, y1: 1, x2: 16, y2: 10, value: "#"});
-            surface.draw(SurfaceObject::Line{x1: 17, y1: 1, x2: 21, y2: 10, value: "#"});
-            surface.draw(SurfaceObject::Line{x1: 15, y1: 1, x2: 10, y2: 10, value: "#"});
+            surface.draw(SurfaceObject::Line {
+                x1: 16,
+                y1: 1,
+                x2: 16,
+                y2: 10,
+                value: "#",
+            });
+            surface.draw(SurfaceObject::Line {
+                x1: 17,
+                y1: 1,
+                x2: 21,
+                y2: 10,
+                value: "#",
+            });
+            surface.draw(SurfaceObject::Line {
+                x1: 15,
+                y1: 1,
+                x2: 10,
+                y2: 10,
+                value: "%",
+            });
         }
     });
 
